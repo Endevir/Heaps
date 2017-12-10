@@ -1,10 +1,10 @@
 //
 // Created by Ivan Arkhipov on 10.12.2017.
 //
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <string>
 
 #include "../PrimitiveHeap.h"
 #include "../BinomialHeap.h"
@@ -16,7 +16,7 @@
 #include <iterator>
 #include <fstream>
 
-void GenerateTest(int & type, int & index, int & indexse, int MaximumHeaps) {
+void GenerateTest(int &type, int &index, int &indexse, int MaximumHeaps) {
     type = rand() % 4;
     index = rand() % MaximumHeaps;
     indexse = rand() % MaximumHeaps;
@@ -40,7 +40,8 @@ std::ifstream GenerateFile(int MaximumHeaps, int CntOperations) {
                 break;
             if ((type == 1 || type == 2) && PosGoodHeaps.find(index) != PosGoodHeaps.end() && NowSizes[index] != 0)
                 break;
-            if (type == 3 && PosGoodHeaps.find(index) != PosGoodHeaps.end() && PosGoodHeaps.find(indexse) != PosGoodHeaps.end())
+            if (type == 3 && PosGoodHeaps.find(index) != PosGoodHeaps.end() &&
+                PosGoodHeaps.find(indexse) != PosGoodHeaps.end())
                 break;
         } while (true);
         if (type == 0) {
@@ -64,7 +65,7 @@ std::ifstream GenerateFile(int MaximumHeaps, int CntOperations) {
     return std::ifstream(std::to_string(FileNumber) + ".txt");
 }
 
-void TestHeap(std::ifstream ifs, std::vector<IHeap*> & FirstHeaps, std::vector<IHeap*> & SecondHeaps) {
+void TestHeap(std::ifstream ifs, std::vector<IHeap *> &FirstHeaps, std::vector<IHeap *> &SecondHeaps) {
     int CntOperations;
     ifs >> CntOperations;
 
@@ -97,8 +98,8 @@ void TestHeap(std::ifstream ifs, std::vector<IHeap*> & FirstHeaps, std::vector<I
 template<class HeapType1, class HeapType2>
 void StartTesting(int CntOperations, size_t MaximumHeaps, int CntTests) {
     for (int i = 0; i < CntTests; i++) {
-        std::vector<IHeap*> FirstHeaps(MaximumHeaps);
-        std::vector<IHeap*> SecondHeaps(MaximumHeaps);
+        std::vector<IHeap *> FirstHeaps(MaximumHeaps);
+        std::vector<IHeap *> SecondHeaps(MaximumHeaps);
 
         for (int i = 0; i < MaximumHeaps; ++i) {
             FirstHeaps[i] = new HeapType1();

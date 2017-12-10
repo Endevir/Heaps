@@ -1,17 +1,14 @@
 //
-// Created by kikab on 10.12.2017.
+// Created by Ivan_Arkhipov on 10.12.2017.
 //
-
 #ifndef HEAPS_LEFTISTHEAP_H
 #define HEAPS_LEFTISTHEAP_H
 
-#include <algorithm>
-#include <cassert>
 #include "IHeap.h"
 
 struct LeftistHeapNode {
     int _value;
-    LeftistHeapNode * l, *r;
+    LeftistHeapNode *l, *r;
     int d;
 
     LeftistHeapNode();
@@ -22,11 +19,11 @@ struct LeftistHeapNode {
 };
 
 class LeftistHeap : public IHeap {
-    int GetD(LeftistHeapNode * t);
+    int GetD(LeftistHeapNode *t);
 
-    LeftistHeapNode * root;
+    LeftistHeapNode *root;
 
-    LeftistHeapNode* Merge(LeftistHeapNode * a, LeftistHeapNode * b);
+    LeftistHeapNode *Merge(LeftistHeapNode *a, LeftistHeapNode *b);
 
 public:
     LeftistHeap();
@@ -35,7 +32,7 @@ public:
 
     ~LeftistHeap() override;
 
-    void Meld(IHeap * b) override;
+    void Meld(IHeap *b) override;
 
     void Insert(int value) override;
 

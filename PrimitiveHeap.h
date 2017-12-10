@@ -1,7 +1,6 @@
 //
 // Created by Ivan Arkhipov on 10.12.2017.
 //
-
 #ifndef HEAPS_PRIMITIVEHEAP_H
 #define HEAPS_PRIMITIVEHEAP_H
 

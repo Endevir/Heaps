@@ -10,7 +10,7 @@
 #include "BinomialHeap.h"
 
 
-BinomialHeapNode::BinomialHeapNode(int value): _value(value), _children(std::vector<BinomialHeapNode*>(0)), _k(0) {}
+BinomialHeapNode::BinomialHeapNode(int value) : _value(value), _children(std::vector<BinomialHeapNode *>(0)), _k(0) {}
 
 BinomialHeapNode::BinomialHeapNode(const BinomialHeapNode &other) {
     if (this == &other)
@@ -21,7 +21,7 @@ BinomialHeapNode::BinomialHeapNode(const BinomialHeapNode &other) {
         _children.emplace_back(new BinomialHeapNode(*child));
 }
 
-BinomialHeapNode& BinomialHeapNode::operator =(const BinomialHeapNode &other) {
+BinomialHeapNode &BinomialHeapNode::operator=(const BinomialHeapNode &other) {
     if (this == &other)
         return *this;
     _value = other._value;
@@ -38,7 +38,7 @@ BinomialHeapNode::~BinomialHeapNode() {
         delete child;
 }
 
-bool BinomialHeapNode::operator <(const BinomialHeapNode *b) const {
+bool BinomialHeapNode::operator<(const BinomialHeapNode *b) const {
     return _k > b->_k;
 }
 
@@ -48,8 +48,8 @@ void BinomialHeapNode::Meld(BinomialHeapNode *other) {
     if (_value <= other->_value) {
         _k++;
         _children.insert(
-            std::upper_bound(_children.begin(), _children.end(), other),
-            new BinomialHeapNode(*other)
+                std::upper_bound(_children.begin(), _children.end(), other),
+                new BinomialHeapNode(*other)
         );
     } else {
         other->Meld(this);
@@ -73,7 +73,7 @@ void BinomialHeapNode::MeldEquals() {
 }
 
 struct Comparator {
-    bool operator() (BinomialHeapNode* one, BinomialHeapNode* another)const {
+    bool operator()(BinomialHeapNode *one, BinomialHeapNode *another) const {
         return one->_k < another->_k;
     }
 };
@@ -104,17 +104,17 @@ bool BinomialHeap::Empty() const {
 
 void BinomialHeap::Meld(IHeap *other) {
     auto _other = dynamic_cast<BinomialHeap *>(other);
-    std::vector<BinomialHeapNode*> _buffer;
+    std::vector<BinomialHeapNode *> _buffer;
     std::merge(_children.begin(), _children.end(), _other->_children.begin(),
                _other->_children.end(), back_inserter(_buffer), Comparator());
     _children.clear();
 
     for (size_t i = 0; i < _buffer.size(); ++i) {
         if (i + 1 == _buffer.size() || _buffer[i]->_k != _buffer[i + 1]->_k ||
-            (i + 2 < _buffer.size() && _buffer[i]->_k == _buffer[i + 1]->_k && _buffer[i + 1]->_k == _buffer[i + 2]->_k)) {
+            (i + 2 < _buffer.size() && _buffer[i]->_k == _buffer[i + 1]->_k &&
+             _buffer[i + 1]->_k == _buffer[i + 2]->_k)) {
             _children.push_back(_buffer[i]);
-        }
-        else {
+        } else {
             _buffer[i + 1]->Meld(_buffer[i]);
         }
     }
@@ -123,7 +123,7 @@ void BinomialHeap::Meld(IHeap *other) {
 }
 
 void BinomialHeap::ExtractMin() {
-    BinomialHeapNode* PosMin = _children[_MinIndex];
+    BinomialHeapNode *PosMin = _children[_MinIndex];
     _children.erase(_children.begin() + _MinIndex);
     Meld(new BinomialHeap(PosMin));
     delete PosMin;

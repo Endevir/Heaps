@@ -1,8 +1,9 @@
 //
 // Created by Ivan_Arkhipov on 10.12.2017.
 //
-
 #include "LeftistHeap.h"
+#include <algorithm>
+#include <cassert>
 
 LeftistHeapNode::LeftistHeapNode() : _value(0), l(nullptr), r(nullptr), d(1) {}
 

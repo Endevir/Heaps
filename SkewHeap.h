@@ -21,9 +21,9 @@ struct SkewHeapNode {
 };
 
 class SkewHeap :public IHeap {
-    SkewHeapNode * root;
+    SkewHeapNode *root;
 private:
-    SkewHeapNode* Merge(SkewHeapNode *a, SkewHeapNode *b);
+    SkewHeapNode *Merge(SkewHeapNode *a, SkewHeapNode *b);
             
 public:
     SkewHeap();

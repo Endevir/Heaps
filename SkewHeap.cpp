@@ -3,7 +3,7 @@
 //
 #include "SkewHeap.h"
 
-SkewHeapNode::SkewHeapNode() :_value(0), l(nullptr), r(nullptr) {}
+SkewHeapNode::SkewHeapNode() : _value(0), l(nullptr), r(nullptr) {}
 
 SkewHeapNode::SkewHeapNode(int value) : _value(value), l(nullptr), r(nullptr) {}
 
