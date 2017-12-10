@@ -10,12 +10,12 @@
 #include "IHeap.h"
 
 struct SkewHeapNode {
-    int value;
+    int _value;
     SkewHeapNode * l, *r;
 
     SkewHeapNode();
     
-    SkewHeapNode(int value);
+    explicit SkewHeapNode(int value);
     
     ~SkewHeapNode();
 };

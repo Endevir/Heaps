@@ -6,5 +6,5 @@ add_subdirectory(googletest)
 include_directories(googletest/googletest/include)
 include_directories(googletest/googlemock/include)
 
-add_executable(runUnitTests TESTS/test.cpp IHeap.h PrimitiveHeap.cpp PrimitiveHeap.h BinomialHeap.cpp BinomialHeap.h TESTS/gtests.cpp SkewHeap.cpp SkewHeap.h)
+add_executable(runUnitTests TESTS/test.cpp IHeap.h PrimitiveHeap.cpp PrimitiveHeap.h BinomialHeap.cpp BinomialHeap.h TESTS/gtests.cpp SkewHeap.cpp SkewHeap.h LeftistHeap.cpp LeftistHeap.h)
 target_link_libraries(runUnitTests gtest gmock)

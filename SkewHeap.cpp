@@ -3,16 +3,14 @@
 //
 #include "SkewHeap.h"
 
+SkewHeapNode::SkewHeapNode() :_value(0), l(nullptr), r(nullptr) {}
 
-SkewHeapNode::SkewHeapNode() :value(0), l(nullptr), r(nullptr) {}
-
-SkewHeapNode::SkewHeapNode(int value) : value(value), l(nullptr), r(nullptr) {}
+SkewHeapNode::SkewHeapNode(int value) : _value(value), l(nullptr), r(nullptr) {}
 
 SkewHeapNode::~SkewHeapNode() {
     delete l;
     delete r;
 }
-
 
 SkewHeapNode* SkewHeap::Merge(SkewHeapNode *a, SkewHeapNode *b) {
     if (!a)
@@ -20,7 +18,7 @@ SkewHeapNode* SkewHeap::Merge(SkewHeapNode *a, SkewHeapNode *b) {
     if (!b)
         return a;
 
-    if (a->value > b->value)
+    if (a->_value > b->_value)
         std::swap(a, b);
 
     a->r = Merge(a->r, b);
@@ -49,7 +47,7 @@ void SkewHeap::Insert(int value) {
 
 int SkewHeap::GetMin() const {
     assert(!Empty());
-    return root->value;
+    return root->_value;
 }
 
 bool SkewHeap::Empty() const {
