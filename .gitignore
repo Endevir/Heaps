@@ -1,0 +1,23 @@
+# cmake build directory
+cmake-build-debug 
+# ide project directory
+.idea
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Build and stuff dirs
+build*
+debug*
+stuff*
+debug_build
+release_build
+/bin
+/lib
+/install
