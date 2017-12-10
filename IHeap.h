@@ -17,9 +17,7 @@ public:
 
     virtual bool Empty() const = 0;
 
-    virtual void Erase() = 0;
-
-    virtual void Meld(const IHeap *other) = 0;
+    virtual void Meld(IHeap *other) = 0;
 
     virtual void ExtractMin() = 0;
 };

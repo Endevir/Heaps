@@ -18,9 +18,7 @@ public:
 
     bool Empty() const override;
 
-    void Erase() override;
-
-    void Meld(const IHeap *other) override;
+    void Meld(IHeap *other) override;
 
     void ExtractMin() override;
 private:

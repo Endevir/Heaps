@@ -27,11 +27,15 @@ public:
     int _value;
 
     std::vector <BinomialHeapNode *> _children;
+
+    int _k;
 };
 
 class BinomialHeap : public IHeap{
 public:
-    BinomialHeap();
+    BinomialHeap() = default;
+
+    explicit BinomialHeap(BinomialHeapNode *t);
 
     explicit BinomialHeap(int root_key);
 
@@ -43,14 +47,14 @@ public:
 
     bool Empty() const override;
 
-    void Erase() override;
-
-    void Meld(const IHeap *other) override;
+    void Meld(IHeap *other) override;
 
     void ExtractMin() override;
 
+    void UpdateMin();
 private:
-    BinomialHeapNode *_root;
+    int _MinIndex;
+    std::vector<BinomialHeapNode*> _children;
 };
 
 #endif //HEAPS_BINOMIALHEAP_H

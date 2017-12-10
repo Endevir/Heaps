@@ -20,11 +20,7 @@ bool PrimitiveHeap::Empty() const {
     return _heap.empty();
 }
 
-void PrimitiveHeap::Erase() {
-    _heap.resize(0);
-}
-
-void PrimitiveHeap::Meld(const IHeap *other) {
+void PrimitiveHeap::Meld(IHeap *other) {
     auto b = dynamic_cast<const PrimitiveHeap *>(other);
     _heap.insert(_heap.end(), b->_heap.begin(), b->_heap.end());
     std::sort(_heap.begin(), _heap.end());
