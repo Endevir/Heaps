@@ -1,5 +1,5 @@
 //
-// Created by Ivan_Arkhipov on 10.12.2017.
+// Created by Ivan Arkhipov on 10.12.2017.
 //
 
 #ifndef HEAPS_IHEAP_H
@@ -9,16 +9,19 @@
 
 class IHeap {
 public:
-    IHeap();
+    virtual ~IHeap() = default;
 
-    IHeap(int key);
+    virtual void Insert(int key) = 0;
 
-    virtual void Insert(int key);
+    virtual int GetMin() const = 0;
 
-    virtual const int GetMin();
+    virtual bool Empty() const = 0;
 
-    virtual void ExtractMin();
-protected:
+    virtual void Erase() = 0;
+
+    virtual void Meld(const IHeap *other) = 0;
+
+    virtual void ExtractMin() = 0;
 };
 
 
